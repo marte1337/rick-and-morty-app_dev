@@ -21,6 +21,8 @@ async function fetchCharacters() {
   const data = await response.json();
   
   maxPage = data.info.pages
+  pagination.innerHTML = `${page} / ${maxPage}`
+  cardContainer.innerHTML = "";
 
   data.results.forEach((character) => {
     cardContainer.append(createCharacterCard(character));
@@ -33,17 +35,15 @@ fetchCharacters();
 nextButton.addEventListener("click", () => {
 if(page < maxPage)
   page++;
-cardContainer.innerHTML = "";
+
 fetchCharacters()
-pagination.innerHTML = `${page} / ${maxPage}`
 })
 
 prevButton.addEventListener("click", () => {
   if (page > 1) {
     page--;
-    cardContainer.innerHTML = "";
+
     fetchCharacters()
-    pagination.innerHTML = `${page} / ${maxPage}`
   } 
 })
 
