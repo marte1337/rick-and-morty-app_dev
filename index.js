@@ -45,6 +45,5 @@ prevButton.addEventListener("click", () => {
     fetchCharacters()
     pagination.innerHTML = `${page} / ${maxPage}`
   } 
-  
 })
 
