@@ -1,4 +1,7 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { NavButton } from './components/nav-button/nav-button.js';
+
+
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -15,15 +18,18 @@ let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
+navigation.append(NavButton());
+
 
 async function fetchCharacters() {
   try{
     cardContainer.innerHTML = "";
+
     const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
 
     if(response.ok){
       const data = await response.json();
-      maxPage = data.info.pages
+      maxPage = data.info.pages;
       pagination.innerHTML = `${page} / ${maxPage}`
     
       data.results.forEach((character) => {
@@ -38,11 +44,8 @@ async function fetchCharacters() {
     console.error(error.message);
   }
 }
-  
-
 
 fetchCharacters();
-
 
 nextButton.addEventListener("click", () => {
 if(page < maxPage)
