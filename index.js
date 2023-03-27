@@ -31,11 +31,12 @@ async function fetchCharacters() {
       })
     } else {
       console.error('Bad request!')
-      pagination.innerHTML = ` 0 / 0`
+      pagination.innerHTML = ` 0 / 0`;
     }
     
     } catch(error) {
     console.error(error.message);
+    pagination.innerHTML = ` 0 / 0`;
   }
 }
   
