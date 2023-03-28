@@ -18,12 +18,13 @@
   --color-foam: #ffffff;
 }
 
-body {
+.app {
   margin: 0;
   font-family: system-ui;
   height: 100vh;
   display: grid;
   grid-template-rows: 60px 1fr 60px;
+
 }
 
 ul {
